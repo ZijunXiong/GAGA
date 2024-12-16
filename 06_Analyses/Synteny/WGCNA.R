@@ -41,7 +41,7 @@ datExpr<-exp_tpm
 nGenes=ncol(datExpr)
 nSamples=nrow(datExpr)
 
-sft <- pickSoftThreshold(datExpr, powerVector = powers, verbose = 5, networkType = "signed")
+sft <- pickSoftThreshold(datExpr, powerVector = c(c(1:10),seq(from=12,to=30,by=2)), verbose = 5, networkType = "signed")
 
 plot(sft$fitIndices[, 1], -sign(sft$fitIndices[, 3]) * sft$fitIndices[, 2],xlab = "Soft Threshold (power)", ylab = "Scale Free Topology Model Fit, signed R^2", type = "n",main = paste("Scale independence"))
 text(sft$fitIndices[, 1], -sign(sft$fitIndices[, 3]) * sft$fitIndices[, 2],labels = powers, cex = 1.2, col = "red")
